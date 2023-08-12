@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca</title>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&family=Roboto&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="titulo">Biblioteca Desarrollo Web</div>
+  <nav class="menu navbar navbar-expand-lg navbar-light" >
+    <div class="container-fluid">
+      <a class="navbar-brand" id="tituloMenu"  href="#">DeW</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link "  id="itemMenu"   href="/">Inicio</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" id="itemMenu" href="/socios">Socios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" id="itemMenu" aria-current="page" href="#">Libros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  id="itemMenu"  href="/prestamos">Prestamos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+      <div class="contenedor1">
+        <div class="contenedorFormulario col-md-6 ">
+          <ul class="nav nav-tabs col-md-12">
+            <li class="nav-item">
+              <a class="nav-link " href="/libros">Agregar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/libros/<%= 'buscar' %>">Buscar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Modificar/Borrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/libros/<%= 'editoriales' %>">Editoriales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/libros/<%= 'autores' %>">Autores</a>
+            </li>
+          </ul>
+        <div class="col-md-12 card contenedorInterno">
+         
+              <h3 class="card-title">Buscar libros</h3>
+
+              <form action="/libros/<%= 'alterar' %>/<%= 'Titulo' %>" method="post" class="mt-2" style="padding-left: 1em; margin-right: 1em;">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Buscar por Titulo
+                </label>
+                <div class="d-flex " role="search" >
+                  <input class="form-control me-2" type="search" name="parametro" placeholder="Buscar por Título" aria-label="Buscar" >
+                  <button class="btn btn-primary" type="submit" >Buscar</button>
+                </div>
+      
+              </form>
+
+              <form action="/libros/<%= 'alterar' %>/<%= 'CodAutor' %>" method="post"  class="mt-0" style="padding-left: 1em;">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Buscar por Autor
+                </label>
+                <div class="d-flex" role="search" >
+                  <select name="parametro" class="form-select">
+                    <option selected>Autor</option>
+                    <% for(var i = 0;i<autores.length;i++){ %>
+                      <option value="<%= autores[i].CodAutor %>"><%= autores[i].Apellido+" "+autores[i].Nombre %></option>
+                    <% } %>
+                    
+                  </select>
+                 
+                  <button class="btn btn-primary" type="submit"  style="margin-right: 1em; margin-left: .5em;">Buscar</button>
+                </div>
+              </form>
+              
+              <form action="/libros/<%= 'alterar' %>/<%= 'CodEditorial' %>" method="post"  class="mt-2" style="padding-left: 1em;">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Buscar por Editorial
+                </label>
+                <div class="d-flex" role="search" >
+                  <select name="parametro" class="form-select">
+                    <option selected>Editorial</option>
+                    <% for(var i = 0;i<editoriales.length;i++){ %>
+                      <option value="<%= editoriales[i].CodEditorial %>"><%= editoriales[i].Editorial %></option>
+                    <% } %>
+                    
+                  </select>
+                 
+                     <button class="btn btn-primary" type="submit"  style="margin-right: 1em; margin-left: .5em;">Buscar</button>
+                    
+                 
+                </div>
+                     
+      
+             
+          </form>
+          <form action="/libros/<%= 'alterar' %>/<%= 'Todos' %>" method="post" class="text-center">
+            <input type="submit" class="btn btn-primary my-4 w-25 align-self-md-center btn-lg" value="Ver Todos">
+          </form>
+      </div>
+      <div class="col-md-12 mt-4 text-center">
+        <table class="table tabla">
+          <tr >
+              <th id="encabezadoTabla">Cod</th>
+              <th id="encabezadoTabla">Título</th>
+              <th id="encabezadoTabla">Autor</th>
+              <th id="encabezadoTabla">Editorial</th>
+              <th id="encabezadoTabla">ISBN</th>
+              <th id="encabezadoTabla">Año lanzamiento</th>
+            
+          </tr>
+          <% for(var i =0;i<libros.length;i++){ %>
+          <tr>
+              <td><%= libros[i].CodLibro %></td>
+              <td><%= libros[i].Titulo  %></td>
+              <td><%= libros[i].Autor  %></td>
+              <td><%= libros[i].Editorial  %></td>
+              <td><%= libros[i].ISBN  %></td>
+              <td><%= libros[i].AEscritura.toDateString()  %></td>
+              <td>
+                <a href="/libros/borrar/<%= libros[i].CodLibro %>/<%= libros[i].CodAutor %>" class="btn btn-danger">Borrar</a>
+                <a href="/libros/editar/<%= libros[i].CodLibro %>" class="btn btn-warning">Editar</a>
+              </td>
+
+            
+          </tr>
+          <% } %>
+      </table>
+
+        
+    </div>   
+     
+      </div>
+      </div>
+    
+
+</body>
+</html>

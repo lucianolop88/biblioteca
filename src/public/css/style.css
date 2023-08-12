@@ -1,0 +1,75 @@
+body{
+        background-color: #2E1503;
+}
+
+.titulo{
+    
+ 
+        font-size: 5em;
+        padding: 8px 12px;
+        text-align: center;
+        font-family: 'Handjet', cursive;
+        
+        color:#F5F5DC;
+    
+  
+}
+
+.menu{
+        background-color: #231709;
+        
+}
+
+#itemMenu{
+       font-size: 1.5em;
+        color:#F5F5DC;
+        font-family: 'Roboto', sans-serif;
+       
+}
+
+#tituloMenu{
+        font-size: 2em;
+        color:#F5F5DC;
+        font-family: 'Roboto', sans-serif;
+}
+
+.login, .contenedor1{
+        padding-top:2em ;
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;     
+        color:#F5F5DC;
+        background-color: #2E1503;
+}
+
+.contenedorFormulario{
+       
+        display:flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;     
+        color:#F5F5DC;
+        background-color: #2E1503;
+}
+.contenedorInterno{
+        background-color: #2E1503;
+}
+
+.tabla{
+        color:#F5F5DC;
+}
+
+#encabezadoTabla{
+        color:#F5F5DC;
+}
+
+.nuevoAutor{
+        border: aliceblue solid thin;
+        padding: 10px;
+}
+
+.nuevaEditorial{
+        border: aliceblue solid thin;
+        padding: 10px;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca</title>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&family=Roboto&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="titulo">Biblioteca Desarrollo Web</div>
+  <nav class="menu navbar navbar-expand-lg navbar-light" >
+    <div class="container-fluid">
+      <a class="navbar-brand" id="tituloMenu"  href="#">DeW</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link "  id="itemMenu"   href="/">Inicio</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" id="itemMenu" href="/socios">Socios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" id="itemMenu" aria-current="page" href="#">Libros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  id="itemMenu"  href="/prestamos">Prestamos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+      <div class="contenedor1">
+        <div class="contenedorFormulario col-md-6 ">
+          <ul class="nav nav-tabs col-md-12">
+            <li class="nav-item">
+              <a class="nav-link " href="/libros">Agregar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/libros/<%= 'buscar' %>">Buscar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="/libros/<%= 'alterar' %>">Modificar/Borrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  href="/libros/<%= 'editoriales' %>">Editoriales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Autores</a>
+            </li>
+          </ul>
+        <div class="col-md-12 card contenedorInterno">
+         
+              <h3 class="card-title">Editoriales</h3>
+
+              <div class="form-group mt-4 nuevaEditorial">
+                <form action="/libros/autores/guardar" method="post" class="card-body">
+                  <h3>Nuevo autor</h3>
+                  <div class="form-group mt-4">
+                    <label for="inputAddress" class="form-label">Nombre</label>
+                      <input type="text" name="nombreAutorNuevo" class="form-control">
+                      
+                      <label for="inputAddress" class="form-label mt-2">Apellido</label>
+                      <input type="text" name="apellidoAutorNuevo" class="form-control">
+                      <div class="text-center">
+                        <input type="submit" class="btn btn-success btn-lg my-4" value="Guardar">
+                      </div>
+                      
+                  </div>
+                  </form>
+  
+              </div>
+              <div class="col-md-12 mt-4 text-center">
+                <table class="table tabla">
+                    <tr >
+                        <th id="encabezadoTabla">Cod</th>
+                        <th id="encabezadoTabla">Nombre</th>
+                        <th id="encabezadoTabla">Apellido</th>
+                    </tr>
+                    <% for(var i =0;i<autores.length;i++){ %>
+                    <tr>
+                        <td><%= autores[i].Nombre  %></td>
+                        <td><%= autores[i].Apellido  %></td>
+                        <td><a href="/libros/autores/borrar/<%= autores[i].CodAutor %>" class="btn btn-danger">Borrar</a>
+                          <a href="/libros/autores/editar/<%= autores[i].CodAutor %>" class="btn btn-warning">Editar</a></td>
+                      </tr>
+                      
+                    </tr>
+                    <% } %>
+                </table>
+            </div> 
+
+             
+
+         
+    
+    </div>   
+     
+      </div>
+      </div>
+    
+
+</body>
+</html>
